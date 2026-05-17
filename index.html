@@ -458,11 +458,68 @@
   .v-care:hover, .v-care.active { border-color: var(--pink); box-shadow: 0 0 0 2px rgba(255,122,182,0.4); }
   .v-care .tag { color: var(--pink); }
 
-  /* Mobile fallback */
+  /* ====================== MOBILE / TABLET ====================== */
+  @media (max-width: 860px) {
+    .app { padding: 16px 14px; gap: 14px; }
+    header.top {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    header.top h1 { font-size: 18px; }
+    .top-actions {
+      width: 100%;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+    .hint { flex: 1; }
+    .diagram { padding: 18px 14px 22px; border-radius: 16px; }
+  }
+
   @media (max-width: 720px) {
+    .goals-row { grid-template-columns: 1fr; }
     .row.cols-5 { grid-template-columns: repeat(2, 1fr); }
     .row.cols-3 { grid-template-columns: 1fr; }
-    .core-row { grid-template-columns: 1fr; }
+    .core-row {
+      grid-template-columns: 1fr !important;
+      gap: 20px;
+      align-items: start;
+    }
+    /* In one column the core block must size to its own content —
+       min-height:100% is only for the 3-column desktop layout */
+    .core-block { min-height: 0; }
+
+    /* Override rows that set grid columns via inline styles */
+    .layer .row {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+      max-width: 100% !important;
+    }
+    /* Empty spacer cells used only for desktop alignment */
+    .layer .row > div:empty { display: none !important; }
+
+    .core-col-title { text-align: left; margin-top: 14px; padding-bottom: 10px; }
+    .core-row > div:first-child .core-col-title { margin-top: 0; }
+    .core-block { padding: 24px 18px; }
+    .core-block .title { font-size: 24px; }
+    .layer { padding: 8px 0; }
+    .flow { margin: 2px 0; }
+
+    .modal-backdrop { padding: 12px; }
+    .modal-card {
+      padding: 24px 20px;
+      border-radius: 18px;
+      max-height: calc(100vh - 24px);
+    }
+    .modal-title { font-size: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .row.cols-5 { grid-template-columns: 1fr; }
+    header.top h1 { font-size: 16px; }
+    .hint { font-size: 12px; padding: 7px 12px; }
+    .card { min-height: 0; }
+    .core-block .title { font-size: 22px; }
   }
 
   /* Scrollbar */
